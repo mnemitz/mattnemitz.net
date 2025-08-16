@@ -1,0 +1,111 @@
+{
+  "$schema": "https://unpkg.com/@jsonresume/schema@1.2.1/schema.json",
+  "basics": {
+    "name": "Matt Nemitz",
+    "email": "matt.nemitz@gmail.com",
+    "summary": "Software Engineer, frontend specialist, enthusiastic generalist.",
+    "location": {
+      "city": "London",
+      "countryCode": "GB"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com/mnemitz",
+        "username": "mnemitz"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Speechmatics",
+      "location": "London/Cambridge, UK",
+      "position": "Senior Software Engineer II",
+      "startDate": "2022-08-15",
+      "summary": "As part of the DevX team, I build tools and services to optimise developer experience for Speechmatics customers.",
+      "highlights": [
+        "Led development of the [Speechmatics JS SDK](https://github.com/speechmatics/speechmatics-js-sdk), a set of tools for developing speech-powered applications on all JS platforms.",
+        "Built large features for the [Speechmatics Portal](https://portal.speechmatics.com), a web application for managing Speechmatics accounts and projects."
+      ]
+    },
+    {
+      "company": "Habito",
+      "position": "Software Engineer",
+      "location": "London, UK",
+      "startDate": "2021-11-21",
+      "endDate": "2022-08-15",
+      "summary": "On the Velocity team at Habito, I undertook projects to streamline developer tooling within the company.",
+      "highlights": [
+        "Built tools for automatically generating REST APIs and clients in Typescript from [Smithy](https://smithy.io/) and [OpenAPI](https://www.openapis.org/) definitions."
+      ]
+    },
+    {
+      "company": "Crisp",
+      "position": "Software Engineer",
+      "location": "Amsterdam, Netherlands",
+      "startDate": "2019-01-01",
+      "endDate": "2021-10-31",
+      "summary": "I worked on the mobile app and backend for Crisp, a fully online supermarket serving the Netherlands and Belgium.",
+      "highlights": [
+        "Built several UI features in React Native, including allowing users to add products to a pending order in a single tap."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "McGill University",
+      "location": "Montreal, Canada",
+      "area": "Computer Science & Linguistics",
+      "studyType": "Bachelor",
+      "startDate": "2013-09-01",
+      "endDate": "2017-06-01",
+      "courses": [
+        "Semantics and Type Theory",
+        "Discrete Mathematics",
+        "Operating Systems",
+        "Algorithms & Data Structures"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Expert",
+      "keywords": ["Typescript", "Javascript", "React", "Remix", "Websockets"]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Advanced",
+      "keywords": ["Go", "Rust", "Python", "SQL"]
+    },
+    {
+      "name": "Mobile Development",
+      "level": "Intermediate",
+      "keywords": ["React Native", "Kotlin"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "French",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Dutch",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Intermediate"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Music",
+      "keywords": ["Piano", "Guitar", "Audio production"]
+    }
+  ]
+}

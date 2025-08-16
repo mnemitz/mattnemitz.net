@@ -8,26 +8,34 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "lint": "biome check --fix",
-    "lint:check": "biome check"
+    "lint:check": "biome check",
+    "test": "vitest run"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.7.0",
+    "@mdx-js/rollup": "^3.1.0",
     "@radix-ui/themes": "^3.2.1",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "isbot": "^5.1.27",
+    "lucide-react": "^0.537.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.7.1"
+    "react-router": "^7.7.1",
+    "use-query-params": "^2.2.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.3",
+    "@jsonresume/schema": "^1.2.1",
     "@react-router/dev": "^7.7.1",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "typescript": "^5.8.3",
+    "vitest": "^1.1.1",
     "vite": "^6.3.3",
+    "vite-plugin-cjs-interop": "^2.2.0",
+    "vite-plugin-markdown": "^2.2.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"

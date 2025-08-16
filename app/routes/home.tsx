@@ -7,6 +7,7 @@ import {
   Flex,
   Grid,
   Heading,
+  Link,
   Text,
 } from "@radix-ui/themes";
 import type React from "react";
@@ -35,7 +36,7 @@ export default function Home() {
       >
         <SocialCard
           href="https://github.com/mnemitz"
-          icon={<SiGithub />}
+          icon={<SiGithub color="var(--accent-11)" />}
           name="GitHub"
           handle="@mnemitz"
         />
@@ -47,7 +48,7 @@ export default function Home() {
         />
         <SocialCard
           href="https://bluesky.app/profile/mattnemitz.com"
-          icon={<SiBluesky />}
+          icon={<SiBluesky color="var(--accent-11)" />}
           name="Bluesky"
           handle="mattnemitz.com"
         />
@@ -65,7 +66,7 @@ function BusinessCard() {
           gap="8"
           align={{ initial: "center", sm: "start" }}
         >
-          <Avatar size="9" fallback="MN" radius="full" />
+          <Avatar size="9" fallback="MN" radius="full" src="/headshot.jpg" />
           <Flex
             direction="column"
             gap="5"
@@ -101,7 +102,11 @@ function BusinessCard() {
               </DataList.Item>
               <DataList.Item>
                 <DataList.Label>Currently at</DataList.Label>
-                <DataList.Value>Speechmatics</DataList.Value>
+                <DataList.Value>
+                  <Link href="https://speechmatics.com" target="_blank">
+                    Speechmatics
+                  </Link>
+                </DataList.Value>
               </DataList.Item>
             </DataList.Root>
           </Flex>

@@ -4,7 +4,12 @@ body {
 }
 
 .radix-themes {
-  --default-font-family: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --default-font-family: "Figtree", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-background: var(--gray-1);
+}
+
+.radix-themes ul {
+  padding-left: 0;
+  margin-left: var(--space-3);
 }

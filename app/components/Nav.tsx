@@ -25,7 +25,7 @@ function NavItem({ to, children }: { to: string; children: React.ReactNode }) {
   const active = useLocation().pathname === to;
 
   return (
-    <Button asChild variant="ghost" style={{ margin: 0 }} size="3">
+    <Button asChild variant="ghost" color="gray" style={{ margin: 0 }} size="3">
       <NavLink to={to} viewTransition end>
         <Text weight={active ? "bold" : "regular"}>{children}</Text>
       </NavLink>
