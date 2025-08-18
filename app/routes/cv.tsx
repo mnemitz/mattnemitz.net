@@ -1,9 +1,10 @@
 import {
   Badge,
+  Blockquote,
   Box,
   Card,
-  DataList,
   Flex,
+  Grid,
   Heading,
   Inset,
   SegmentedControl,
@@ -69,12 +70,14 @@ export default function CV() {
         })}
       </SegmentedControl.Root>
       <Box asChild width="100%">
-        <Card size={{ initial: "4", sm: "5" }}>
-          {format === "html" ? (
-            <CVContent />
-          ) : format === "json" ? (
-            <CVJSON />
-          ) : null}
+        <Card size={{ initial: "4", sm: "5" }} asChild>
+          <article>
+            {format === "html" ? (
+              <CVContent />
+            ) : format === "json" ? (
+              <CVJSON />
+            ) : null}
+          </article>
         </Card>
       </Box>
     </Flex>
@@ -86,114 +89,195 @@ function CVContent() {
 
   return (
     <Flex gap="4" direction={{ initial: "column", md: "row" }}>
-      <Separator orientation="vertical" size="4" />
-      <Flex direction="column" gap="4">
-        <Heading size="8">{data.basics.name}</Heading>
-        <Text size={{ initial: "2", sm: "3" }} color="gray">
-          {data.basics.summary}
-        </Text>
-
-        <Flex direction="column" gap="4" py="4">
-          <Heading size="8">Work</Heading>
-          {data?.work.map((work) => (
-            <Flex key={work.company} direction="column" gap="3">
-              <Heading size="5">
-                {work.position} at {work.company}
-              </Heading>
-              <Text size="2" color="gray">
-                {work.startDate} &ndash; {work.endDate ?? "Present"}
-              </Text>
-              <Text>{work.summary}</Text>
-              <ul>
-                {work.highlights.map((highlight) => (
-                  <li key={highlight}>
-                    <WithMarkdownLinks>{highlight}</WithMarkdownLinks>
-                  </li>
-                ))}
-              </ul>
-            </Flex>
-          ))}
-        </Flex>
+      <Flex direction="column" gap="4" asChild>
+        <section>
+          <Heading size="8">{data.basics.name}</Heading>
+          <Text size={{ initial: "2", sm: "3" }} color="gray">
+            {data.basics.summary}
+          </Text>
+          <Experience />
+        </section>
       </Flex>
 
       <Flex asChild direction={{ initial: "column", md: "row" }}>
         <Inset
           side={{ initial: "bottom", md: "right" }}
           style={{ backgroundColor: "var(--gray-2)" }}
+          asChild
         >
-          <Box height="100%" display="block" minHeight="1px" asChild>
-            <Separator
-              orientation={{ initial: "horizontal", md: "vertical" }}
-              size="4"
-            />
-          </Box>
-          <Flex
-            direction={{ initial: "row", md: "column" }}
-            wrap="wrap"
-            justify={{ initial: "start", md: "between" }}
-            gap="4"
-            p="8"
-            pr="0"
-          >
-            <Flex direction="column" gap="6">
-              <Heading size="6">Education</Heading>
-              {data?.education.map((education) => (
-                <Flex key={education.institution} direction="column" gap="3">
-                  <Heading size="5">{education.institution}</Heading>
-                  <Text size="2" color="gray">
-                    {education.startDate} &ndash;{" "}
-                    {education.endDate ?? "Present"}
-                  </Text>
-                  <Text size="2">{education.area}</Text>
-                  <Text size="2">
-                    <ul>
-                      {education.courses.map((course) => (
-                        <li key={course}>
-                          <WithMarkdownLinks>{course}</WithMarkdownLinks>
-                        </li>
-                      ))}
-                    </ul>
-                  </Text>
-                </Flex>
-              ))}
-            </Flex>
-
-            <Flex direction="column" gap="4" justify="between">
-              <Heading size="6">Skills</Heading>
-              <ul>
-                {data.skills.map((skill) => (
-                  <li key={skill.name}>
-                    <Text size="2">
-                      <Text weight="bold">{skill.level}</Text> in {skill.name}
-                    </Text>
-                    <Flex wrap="wrap" gap="2" mb="2">
-                      {skill.keywords.map((keyword) => (
-                        <Badge variant="surface" key={keyword}>
-                          {keyword}
-                        </Badge>
-                      ))}
-                    </Flex>
-                  </li>
-                ))}
-              </ul>
-            </Flex>
-
-            <Flex direction="column" gap="4">
-              <Heading size="6">Languages</Heading>
-              <DataList.Root orientation="vertical">
-                {data?.languages.map(({ language, fluency }) => (
-                  <DataList.Item key={language}>
-                    <DataList.Label>{language}</DataList.Label>
-                    <DataList.Value>{fluency}</DataList.Value>
-                  </DataList.Item>
-                ))}
-              </DataList.Root>
-            </Flex>
-          </Flex>
+          <aside>
+            <Box height="100%" display="block" minHeight="1px" asChild>
+              <Separator
+                orientation={{ initial: "horizontal", md: "vertical" }}
+                size="4"
+              />
+            </Box>
+            <Grid
+              columns={{ initial: "1", sm: "2", md: "1" }}
+              gap="4"
+              p="8"
+              pr="0"
+            >
+              <Education />
+              <Skills />
+              <Languages />
+              <Interests />
+            </Grid>
+          </aside>
         </Inset>
       </Flex>
     </Flex>
   );
+}
+
+function Experience() {
+  const { work } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" gap="4" py="4">
+      <Heading size="8">Work</Heading>
+      {work.map((work) => (
+        <Flex key={work.company} direction="column" gap="3">
+          <Heading size="5">
+            {work.position} at {work.company}
+          </Heading>
+          <Text size="2" color="gray">
+            {cvDate(work.startDate)} &ndash; {cvDate(work.endDate)}
+          </Text>
+          <Text>{work.summary}</Text>
+          <ul>
+            {work.highlights.map((highlight) => (
+              <li key={highlight}>
+                <WithMarkdownLinks>{highlight}</WithMarkdownLinks>
+              </li>
+            ))}
+          </ul>
+        </Flex>
+      ))}
+    </Flex>
+  );
+}
+
+function Education() {
+  const { education } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" asChild>
+      <section>
+        <Heading size="6" mb="4">
+          Education
+        </Heading>
+        {education.map((education) => (
+          <Flex key={education.institution} direction="column" gap="3">
+            <Heading size="5">{education.institution}</Heading>
+            <Text size="2" color="gray">
+              {cvDate(education.startDate)} &ndash; {cvDate(education.endDate)}
+            </Text>
+            <Text size="2">
+              {education.studyType} in {education.area}
+            </Text>
+            <Text size="2">
+              <ul>
+                {education.courses.map((course) => (
+                  <li key={course}>
+                    <WithMarkdownLinks>{course}</WithMarkdownLinks>
+                  </li>
+                ))}
+              </ul>
+            </Text>
+          </Flex>
+        ))}
+      </section>
+    </Flex>
+  );
+}
+
+function Languages() {
+  const { languages } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" asChild>
+      <section>
+        <Heading size="6">Languages</Heading>
+        <ul>
+          {languages.map(({ language, fluency, notes, isoCode }) => (
+            <li key={language}>
+              <Text size="2">
+                <Text weight="bold">{fluency}</Text> {language}
+                <br />
+                <Box asChild mb="2">
+                  <Blockquote size="2" lang={isoCode} weight="light">
+                    {notes}
+                  </Blockquote>
+                </Box>
+              </Text>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Flex>
+  );
+}
+
+function Skills() {
+  const { skills } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" justify="between" asChild>
+      <section>
+        <Heading size="6">Skills</Heading>
+        <ul>
+          {skills.map((skill) => (
+            <li key={skill.name}>
+              <Text size="2">
+                <Text weight="bold">{skill.level}</Text> in {skill.name}
+              </Text>
+              <Flex wrap="wrap" gap="2" mb="2">
+                {skill.keywords.map((keyword) => (
+                  <Badge variant="surface" key={keyword}>
+                    {keyword}
+                  </Badge>
+                ))}
+              </Flex>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Flex>
+  );
+}
+
+function Interests() {
+  const { interests } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" asChild>
+      <section>
+        <Heading size="6">Interests</Heading>
+        <ul>
+          {interests.map(({ name, keywords }) => (
+            <li key={name}>
+              <Text size="2">
+                <Text weight="bold">{name}</Text>
+              </Text>
+              <Flex wrap="wrap" gap="2" mb="2">
+                {keywords.map((keyword) => (
+                  <Badge variant="surface" key={keyword}>
+                    {keyword}
+                  </Badge>
+                ))}
+              </Flex>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Flex>
+  );
+}
+
+function cvDate(date?: string) {
+  if (!date) {
+    return "Present";
+  }
+  return new Date(date).toLocaleDateString("en-GB", {
+    month: "long",
+    year: "numeric",
+  });
 }
 
 function CVJSON() {

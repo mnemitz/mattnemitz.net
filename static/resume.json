@@ -87,25 +87,41 @@
   "languages": [
     {
       "language": "English",
-      "fluency": "Native"
+      "isoCode": "en",
+      "fluency": "Native",
+      "notes": "I'm originally from the U.S."
     },
     {
       "language": "French",
-      "fluency": "Fluent"
+      "isoCode": "fr",
+      "fluency": "Fluent",
+      "notes": "J'ai vécu à Montréal pour 6 ans."
     },
     {
       "language": "Dutch",
-      "fluency": "Fluent"
+      "isoCode": "nl",
+      "fluency": "Fluent",
+      "notes": "Ik heb familie in Nederland."
     },
     {
       "language": "Spanish",
-      "fluency": "Intermediate"
+      "isoCode": "es",
+      "fluency": "Intermediate",
+      "notes": "Lo practico cuando puedo."
     }
   ],
   "interests": [
     {
       "name": "Music",
-      "keywords": ["Piano", "Guitar", "Audio production"]
+      "keywords": ["Piano", "Guitar", "Bass"]
+    },
+    {
+      "name": "Audio software",
+      "keywords": ["Bitwig", "Logic", "Ableton"]
+    },
+    {
+      "name": "Baking",
+      "keywords": ["Sourdough", "Pizza", "Cookies"]
     }
   ]
 }
