@@ -15,7 +15,7 @@ export default function WithMarkdownLinks({ children }: { children: string }) {
 
     return (
       // biome-ignore lint/suspicious/noArrayIndexKey: This is static, and we need it to be ordinal
-      <RadixLink asChild key={index} highContrast weight="medium">
+      <RadixLink asChild key={index} weight="medium">
         <Link to={segment.href}>{segment.text}</Link>
       </RadixLink>
     );

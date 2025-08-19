@@ -10,7 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "@radix-ui/themes/styles.css";
 import "./app.css";
-import { Flex, Theme } from "@radix-ui/themes";
+import { Card, Code, Flex, Heading, Text, Theme } from "@radix-ui/themes";
+import { AlertCircleIcon } from "lucide-react";
 import { Nav } from "./components/Nav";
 
 export const links: Route.LinksFunction = () => [
@@ -54,7 +55,7 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
+  let message = "Sorry, something went wrong...";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
@@ -70,14 +71,26 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <Flex direction="column" asChild gap="8" maxWidth="1300px" m="auto" p="8">
+      <main>
+        <AlertCircleIcon color="var(--red-8)" size="72" />
+        <Heading size="8">{message}</Heading>
+        <Text size="3">{details}</Text>
+        {stack && (
+          <Card
+            asChild
+            variant="ghost"
+            style={{ backgroundColor: "var(--accent-2)" }}
+            data-accent-color="red"
+          >
+            <pre className="w-full p-4 overflow-x-auto">
+              <Code variant="ghost" size="2">
+                {stack}
+              </Code>
+            </pre>
+          </Card>
+        )}
+      </main>
+    </Flex>
   );
 }

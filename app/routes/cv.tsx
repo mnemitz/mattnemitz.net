@@ -7,22 +7,22 @@ import {
   Grid,
   Heading,
   Inset,
+  Link,
   SegmentedControl,
   Separator,
   Text,
 } from "@radix-ui/themes";
-import { CurlyBracesIcon, FileIcon, ScrollTextIcon } from "lucide-react";
+import { CurlyBracesIcon, FileIcon } from "lucide-react";
 import { useCallback } from "react";
 import { useLoaderData, useSearchParams } from "react-router";
 import WithMarkdownLinks from "~/components/WithMarkdownLinks";
 import cv from "../../static/resume.json" with { type: "json" };
 
-const FORMATS = ["html", "json", "pdf"];
+const FORMATS = ["html", "json"];
 
 const FORMAT_ICONS = {
   html: FileIcon,
   json: CurlyBracesIcon,
-  pdf: ScrollTextIcon,
 } as const;
 
 export async function loader() {
@@ -85,18 +85,14 @@ export default function CV() {
 }
 
 function CVContent() {
-  const data = useLoaderData<typeof loader>();
-
   return (
     <Flex gap="4" direction={{ initial: "column", md: "row" }}>
-      <Flex direction="column" gap="4" asChild>
-        <section>
-          <Heading size="8">{data.basics.name}</Heading>
-          <Text size={{ initial: "2", sm: "3" }} color="gray">
-            {data.basics.summary}
-          </Text>
-          <Experience />
-        </section>
+      <Flex direction="column" gap="4">
+        <Basics />
+        <Projects />
+        <Text weight="medium" size="5">
+          References available on request.
+        </Text>
       </Flex>
 
       <Flex asChild direction={{ initial: "column", md: "row" }}>
@@ -153,6 +149,44 @@ function Experience() {
           </ul>
         </Flex>
       ))}
+    </Flex>
+  );
+}
+
+function Basics() {
+  const { basics } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" asChild gap="4">
+      <section>
+        <Heading size="8">{basics.name}</Heading>
+        <Text size="4" color="gray">
+          {basics.label}
+        </Text>
+        <Blockquote size="2">{basics.summary}</Blockquote>
+        <Experience />
+      </section>
+    </Flex>
+  );
+}
+
+function Projects() {
+  const { projects } = useLoaderData<typeof loader>();
+  return (
+    <Flex direction="column" asChild>
+      <section>
+        <Heading size="8">Projects</Heading>
+        <ul>
+          {projects.map((project) => (
+            <li key={project.name}>
+              <Text>
+                <Link href={project.url}>{project.name}</Link>
+                &nbsp;&mdash;&nbsp;
+                <WithMarkdownLinks>{project.description}</WithMarkdownLinks>
+              </Text>
+            </li>
+          ))}
+        </ul>
+      </section>
     </Flex>
   );
 }

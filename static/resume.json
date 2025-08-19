@@ -3,7 +3,9 @@
   "basics": {
     "name": "Matt Nemitz",
     "email": "matt.nemitz@gmail.com",
-    "summary": "Software Engineer, frontend specialist, enthusiastic generalist.",
+    "label": "Software Engineer",
+    "summary": "I'm a full-stack software engineer with experience in frontend development, audio processing and backend development.",
+    "url": "https://mattnemitz.net",
     "location": {
       "city": "London",
       "countryCode": "GB"
@@ -24,8 +26,10 @@
       "startDate": "2022-08-15",
       "summary": "As part of the DevX team, I build tools and services to optimise developer experience for Speechmatics customers.",
       "highlights": [
-        "Led development of the [Speechmatics JS SDK](https://github.com/speechmatics/speechmatics-js-sdk), a set of tools for developing speech-powered applications on all JS platforms.",
-        "Built large features for the [Speechmatics Portal](https://portal.speechmatics.com), a web application for managing Speechmatics accounts and projects."
+        "Lead developer of the [Speechmatics JS SDK](https://github.com/speechmatics/speechmatics-js-sdk), a set of tools for developing speech-powered applications on all JS platforms.",
+        "Built large features for the [Speechmatics Portal](https://portal.speechmatics.com), a web application for managing Speechmatics accounts and projects (written in Remix).",
+        "Drove the development of the [Speechmatics developer docs site](https://docs.speechmatics.com) using exclusively open-source tools, and offering a first-class developer experience on par with paid providers like Fern.",
+        "Built a [mobile app](https://apps.apple.com/gb/app/speechmatics-flow/id6673918783) with the team in React Native showcasing Speechmatics Voice AI capabilities."
       ]
     },
     {
@@ -36,18 +40,20 @@
       "endDate": "2022-08-15",
       "summary": "On the Velocity team at Habito, I undertook projects to streamline developer tooling within the company.",
       "highlights": [
-        "Built tools for automatically generating REST APIs and clients in Typescript from [Smithy](https://smithy.io/) and [OpenAPI](https://www.openapis.org/) definitions."
+        "Built tools for generating REST APIs and clients in Typescript from [Smithy](https://smithy.io/) and [OpenAPI](https://www.openapis.org/) definitions.",
+        "Contributed UI developments to the main website built using Purescript, and backend services in Haskell."
       ]
     },
     {
       "company": "Crisp",
-      "position": "Software Engineer",
+      "position": "Fullstack Developer",
       "location": "Amsterdam, Netherlands",
-      "startDate": "2019-01-01",
+      "startDate": "2019-10-01",
       "endDate": "2021-10-31",
       "summary": "I worked on the mobile app and backend for Crisp, a fully online supermarket serving the Netherlands and Belgium.",
       "highlights": [
-        "Built several UI features in React Native, including allowing users to add products to a pending order in a single tap."
+        "Built several UI features in React Native, including allowing users to add products to a pending order in a single tap.",
+        "Worked with the warehouse teams to improve internal order management system UI"
       ]
     }
   ],
@@ -65,6 +71,18 @@
         "Operating Systems",
         "Algorithms & Data Structures"
       ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "browser-audio-input",
+      "description": "Library for managing audio input devices in the browser, and recording PCM audio.",
+      "url": "https://www.npmjs.com/package/@speechmatics/browser-audio-input"
+    },
+    {
+      "name": "OpenAPI schema loader",
+      "description": "Webpack loader for loading and parsing OpenAPI schemas into web pages",
+      "url": "https://www.npmjs.com/package/openapi-schema-loader"
     }
   ],
   "skills": [
