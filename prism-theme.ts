@@ -2,8 +2,7 @@ import type { PrismTheme } from "prism-react-renderer";
 
 export default {
   plain: {
-    color: "var(--gray-12)",
-    backgroundColor: "var(--gray-1)",
+    backgroundColor: "transparent",
   },
   styles: [
     {

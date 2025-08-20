@@ -1,22 +1,34 @@
 import { Button, Flex, Separator, Text } from "@radix-ui/themes";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { NavLink, useLocation } from "react-router";
 
 export function Nav() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <Flex
-      width="100%"
-      asChild
-      gap="2"
-      p="2"
-      justify="center"
       align="center"
+      width="100%"
       style={{ backgroundColor: "var(--gray-2)" }}
     >
-      <nav>
-        <NavItem to="/">Home</NavItem>
-        <Separator size="1" orientation="vertical" />
-        <NavItem to="/cv">CV</NavItem>
-      </nav>
+      <Flex width="100%" asChild gap="2" p="2" justify="center" align="center">
+        <nav>
+          <NavItem to="/">Home</NavItem>
+          <Separator size="1" orientation="vertical" />
+          <NavItem to="/cv">CV</NavItem>
+        </nav>
+      </Flex>
+      <Button
+        variant="ghost"
+        radius="full"
+        color="gray"
+        style={{ margin: 0 }}
+        size="3"
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      >
+        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      </Button>
     </Flex>
   );
 }

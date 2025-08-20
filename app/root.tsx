@@ -12,6 +12,7 @@ import "@radix-ui/themes/styles.css";
 import "./app.css";
 import { Card, Code, Flex, Heading, Text, Theme } from "@radix-ui/themes";
 import { AlertCircleIcon } from "lucide-react";
+import { ThemeProvider } from "next-themes";
 import { Nav } from "./components/Nav";
 
 export const links: Route.LinksFunction = () => [
@@ -37,12 +38,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Theme accentColor="grass" grayColor="sand">
-          <Flex direction="column">
-            <Nav />
-            {children}
-          </Flex>
-        </Theme>
+        <ThemeProvider attribute="class">
+          <Theme accentColor="grass" grayColor="sand">
+            <Flex direction="column">
+              <Nav />
+              {children}
+            </Flex>
+          </Theme>
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
