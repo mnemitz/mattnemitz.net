@@ -13,10 +13,19 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { CurlyBracesIcon, FileIcon } from "lucide-react";
+import { Highlight } from "prism-react-renderer";
 import { useCallback } from "react";
 import { useLoaderData, useSearchParams } from "react-router";
 import WithMarkdownLinks from "~/components/WithMarkdownLinks";
+import prismTheme from "../../prism-theme";
 import cv from "../../static/resume.json" with { type: "json" };
+
+export function meta() {
+  return [
+    { title: "CV | Matt Nemitz" },
+    { name: "description", content: "My CV" },
+  ];
+}
 
 const FORMATS = ["html", "json"];
 
@@ -28,8 +37,6 @@ const FORMAT_ICONS = {
 export async function loader() {
   return cv;
 }
-
-export type CVLoader = typeof loader;
 
 export default function CV() {
   const [params, setParams] = useSearchParams();
@@ -162,7 +169,7 @@ function Basics() {
         <Text size="4" color="gray">
           {basics.label}
         </Text>
-        <Blockquote size="2">{basics.summary}</Blockquote>
+        <Blockquote>{basics.summary}</Blockquote>
         <Experience />
       </section>
     </Flex>
@@ -337,7 +344,25 @@ function CVJSON() {
         </Flex>
       </Inset>
       <Box asChild p="3">
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <Highlight
+          language="json"
+          code={JSON.stringify(data, null, 2)}
+          theme={prismTheme}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre className={className} style={style}>
+              {tokens.map((line, i) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: Static data
+                <div key={i} {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: Static data
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
       </Box>
     </>
   );

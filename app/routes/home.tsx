@@ -16,8 +16,8 @@ import type React from "react";
 
 export function meta() {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Matt Nemitz" },
+    { name: "description", content: "Software Engineer" },
   ];
 }
 
@@ -36,7 +36,7 @@ export default function Home() {
       >
         <SocialCard
           href="https://github.com/mnemitz"
-          icon={<SiGithub color="var(--accent-11)" />}
+          icon={<SiGithub color="var(--gray-11)" />}
           name="GitHub"
           handle="@mnemitz"
         />
@@ -48,7 +48,7 @@ export default function Home() {
         />
         <SocialCard
           href="https://bluesky.app/profile/mattnemitz.com"
-          icon={<SiBluesky color="var(--accent-11)" />}
+          icon={<SiBluesky color="var(--gray-11)" />}
           name="Bluesky"
           handle="mattnemitz.com"
         />
