@@ -115,12 +115,7 @@ function CVContent() {
                 size="4"
               />
             </Box>
-            <Grid
-              columns={{ initial: "1", sm: "2", md: "1" }}
-              gap="4"
-              p="8"
-              pr="0"
-            >
+            <Grid columns={{ initial: "1", sm: "2", md: "1" }} gap="4" p="8">
               <Education />
               <Skills />
               <Languages />
@@ -186,7 +181,9 @@ function Projects() {
           {projects.map((project) => (
             <li key={project.name}>
               <Text>
-                <Link href={project.url}>{project.name}</Link>
+                <Link href={project.url} target="_blank">
+                  {project.name}
+                </Link>
                 &nbsp;&mdash;&nbsp;
                 <WithMarkdownLinks>{project.description}</WithMarkdownLinks>
               </Text>

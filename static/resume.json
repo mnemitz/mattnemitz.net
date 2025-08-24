@@ -24,7 +24,7 @@
       "location": "London/Cambridge, UK",
       "position": "Senior Software Engineer II",
       "startDate": "2022-08-15",
-      "summary": "As part of the DevX team, I build tools and services to optimise developer experience for Speechmatics customers.",
+      "summary": "As part of the DevX team, I build tools and services to optimize developer experience for Speechmatics customers.",
       "highlights": [
         "Lead developer of the [Speechmatics JS SDK](https://github.com/speechmatics/speechmatics-js-sdk), a set of tools for developing speech-powered applications on all JS platforms.",
         "Built large features for the [Speechmatics Portal](https://portal.speechmatics.com), a web application for managing Speechmatics accounts and projects (written in Remix).",

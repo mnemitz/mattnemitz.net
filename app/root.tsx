@@ -30,10 +30,41 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // supressHydrationWarning is needed for next-themes
+    // https://www.npmjs.com/package/next-themes
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* OpenGraph / Social Media Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Matt Nemitz" />
+        <meta property="og:title" content="Matt Nemitz - Software Engineer" />
+        <meta
+          property="og:description"
+          content="Software Engineer based in London, UK. Currently working at Speechmatics."
+        />
+        <meta property="og:image" content="/headshot.jpg" />
+        <meta property="og:image:alt" content="Matt Nemitz headshot" />
+        <meta property="og:url" content="https://mattnemitz.net" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Matt Nemitz - Software Engineer" />
+        <meta
+          name="twitter:description"
+          content="Software Engineer based in London, UK. Currently working at Speechmatics."
+        />
+        <meta name="twitter:image" content="/headshot.jpg" />
+        <meta name="twitter:image:alt" content="Matt Nemitz headshot" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="author" content="Matt Nemitz" />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#46a758" />
+
         <Meta />
         <Links />
       </head>

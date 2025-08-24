@@ -1,6 +1,7 @@
 import { SiBluesky, SiGithub } from "@icons-pack/react-simple-icons";
 import {
   Avatar,
+  Badge,
   Box,
   Card,
   DataList,
@@ -94,9 +95,7 @@ function BusinessCard() {
                 <DataList.Item>
                   <DataList.Label>Favorite color</DataList.Label>
                   <DataList.Value>
-                    <Text color="green" size="3">
-                      Green
-                    </Text>
+                    <Badge size="3">Green</Badge>
                   </DataList.Value>
                 </DataList.Item>
               </DataList.Item>
