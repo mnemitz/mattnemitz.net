@@ -2,5 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mattnemitz-net",
   "compatibility_date": "2025-04-04",
-  "main": "./workers/app.ts"
+  "main": "./workers/app.ts",
+  "routes": [
+    {
+      "pattern": "mattnemitz.net",
+      "custom_domain": true
+    }
+  ]
 }
