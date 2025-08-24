@@ -9,7 +9,8 @@
     "typecheck": "react-router typegen && tsc",
     "lint": "biome check --fix",
     "lint:check": "biome check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.7.0",
